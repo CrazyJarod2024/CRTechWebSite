@@ -1,0 +1,34 @@
+.dossier-images {
+    width: 100%; 
+    margin: 0 auto;
+    text-align: center;
+}
+.dossier-images img {
+    width: 100%; 
+    height: auto;
+    display: block;
+    margin-bottom: 10px; /* Petit espace entre les pages */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+   
+}
+
+
+
+/********************************/
+/* Tablette ********************/
+/*******************************/
+@media screen and (min-width: 578px) and (max-width: 768px) {
+    .dossier-images {
+        width: 90%; /* Légèrement réduit sur tablette */
+    }
+}
+
+/********************************************/
+/***      Ordinateur (Écrans > 769px)    ****/
+/********************************************/
+@media screen and (min-width: 769px) {
+    .dossier-images {
+        width: 70%; /* Largeur confortable sur PC */
+      
+    }
+}
