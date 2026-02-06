@@ -7,31 +7,33 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: hwb(197 9% 24%)
-}
-body {
-  font-family: Arial, Helvetica, sans-serif;
+    background-color: hwb(197 9% 24%);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Le Hack du Menu (Case à cocher cachée) */
-#menu {
-    display: none;
+body.page-contact {
+    background-color: white;
 }
 
-
+/* Gestion globale des images */
 img {
     max-width: 100%;
     height: auto;
 }
 
-ul#menu li a:link,
-ul#menu li a:visited {
-  display: block;
-  text-decoration: none;
-  color: white;
-  background-color: black;
+/* Le Hack du Menu (Caché par défaut) */
+input#mn, label[for="mn"] {
+    display: none;
 }
 
+/* Liens menu génériques */
+ul#menu li a:link,
+ul#menu li a:visited {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+}
 
 /* Pied de page */
 footer {
@@ -41,83 +43,138 @@ footer {
     padding: 20px;
     margin-top: 40px;
 }
-
 footer h4 {
     text-transform: uppercase;
     font-weight: normal;
     font-size: 0.8em;
     margin: 5px 0;
 }
-
 footer a {
     color: orangered;
     text-decoration: none;
     font-size: 0.8em;
 }
 
-/* Style du bouton Mobile par défaut (caché sur PC) */
-.mobile-pdf-btn {
-    display: none; 
+/*****************************************/
+/* 2. SECTION DOSSIER IMAGES             */
+/*****************************************/
+.dossier-images {
+    width: 100%; 
+    margin: 0 auto;
     text-align: center;
-    padding: 20px;
+}
+.dossier-images img {
+    width: 100%; 
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.btn-download {
-    display: inline-block;
-    background-color: #333;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+/*****************************************/
+/* SECTION PAGE CONTACT             */
+/*****************************************/
+html.page-contact, 
+body.page-contact {
+    background-color: white !important;
+    background: white !important;
 }
+
+#contact {
+    margin-bottom: 10px;
+    background-image: url(../images/contact.png);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;               
+    flex-direction: column;  
+    justify-content: center;
+    font-size: xx-large;
+    font-weight: bolder;
+    color: hwb(197 9% 24%);
+    padding-bottom: 15px;
+}
+#contact h1, #contact p {
+    text-align: left;
+    padding: 10px;
+    margin-left: 40px;
+}
+#contact ul { 
+    text-align: left; 
+    width: fit-content; 
+    list-style: none; 
+}
+#contact li { 
+    display: block; 
+    padding: 10px; 
+}
+
+/*****************************************/
+/* FIN SECTION PAGE CONTACT             */
+/*****************************************/
+
+
+
 
 /* *************************************/
 /* Smartphone (Écrans < 577px) */
 /**************************************/
 @media screen and (max-width: 577px) {
 
-    /* --- Bouton menu --- */
-    header .menu-icon {
-        width: 30px;
-        height: 30px;
+
+    input#mn {
+        display: none;
+    }
+
+    /*  Bouton menu (Le contenant)  */
+    label[for="mn"].menu-icon { 
+        display: block !important;
+        width: 40px; /* Taille fixe pour le bouton */
+        height: 40px;
         position: fixed;
         right: 20px;
         top: 20px;
         cursor: pointer;
-        z-index: 100;
-        background-color: rgba(255,255,255,0.8);
+        z-index: 1000; 
+        background-color: white;
         border-radius: 5px;
         padding: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
-    
-    header .menu-icon img {
-        width: 100%;
-        height: 100%;
+
+    /*  L'image à l'intérieur du bouton  */
+    label[for="mn"].menu-icon img {
+        width: 100%; /* Elle prend 100% des 40px du parent */
+        height: auto;
         display: block;
     }
 
-    /* --- Menu caché --- */
+    /* Pour que le contenu contact ne remonte pas trop */
+    body {
+        margin-top: 80px;
+    }
+
+    /*  Le Menu caché  */
     header nav {
         position: fixed;
         top: 0;
-        right: -250px; 
+        right: -250px; /* Caché à droite */
         width: 250px;
         height: 100vh;
         background-color: hwb(197 9% 24%); 
         transition: right 0.4s ease-in-out; 
-        padding-top: 60px;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+        padding-top: 80px;
+        z-index: 999;
     }
 
-  
-    /* Quand la case #menu est cochée, on ramène nav à 0 */
-
-    #menu:checked ~ nav {      
+    /* Input menu*/
+    input#mn:checked ~ nav {
         right: 0;
     }
+
+
 
     /* Menu à la vertical */
     header nav ul#menus {
@@ -141,7 +198,7 @@ footer a {
         color: white;
         text-decoration: none;
         font-size: 1.2em;
-       border-bottom: 1px solid rgba(255,255,255,0.1); 
+        border-bottom: 1px solid rgba(255,255,255,0.1); 
     }
     nav a:hover {
         
@@ -152,34 +209,17 @@ footer a {
     /* Gestion des Logos Mobile */
     .logo-tb { display: none; }
     .logo-pc { display: block; margin: 0 auto; height: 40px; }
-    
+
+    #contact {
+    font-size: 1.2rem; /* Taille plus raisonnable pour mobile */
+    min-height: 100vh; /* Utilise toute la hauteur de l'écran */
+}
 
 
-     .pdf-wrapper-mobile {
-        width: 100%;
-        height: 80vh;       
-    }
-       
-    .pdf-container-dossier {
-        width: 100%;
-        height: 100%; 
-    }
-    /* On affiche le bouton de remplacement */
-    .mobile-pdf-btn {
-        display: block; 
-    }
-
-
-    .pdf-wrapper-mobile {
-        min-height: 200px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-       
-    }
- 
-
+#contact ul {
+    width: 90%; /* Évite que la liste ne pousse les murs */
+}
+  
 }
 
 
@@ -188,6 +228,9 @@ footer a {
 /*******************************/
 @media screen and (min-width: 578px) and (max-width: 768px) {
 
+    .dossier-images {
+        width: 90%; 
+    }
     /* On cache le bouton menu mobile */
     header .menu-icon {
         display: none;
@@ -251,7 +294,6 @@ footer a {
     }
 
 
-
     nav img.logo {
         width: 35%;
         height: auto;
@@ -286,20 +328,6 @@ footer a {
         padding: 10px;
     }
 
-   
-    
-  
-    .pdf-container {
-        width: 100%;       
-        height: 75vh;      
-        min-height: 400px; 
-    }
-
-    .pdf-container-dossier {
-        width: 100%;
-        height: 75vh;
-    }
-
 }
 
 
@@ -307,7 +335,12 @@ footer a {
 /***      Ordinateur (Écrans > 769px)    ****/
 /********************************************/
 @media screen and (min-width: 769px) {
-
+body {
+    padding-top: 70px;
+}
+    .dossier-images {
+        width: 70%; 
+    }
     /* On cache le bouton menu */
     header .menu-icon {
         display: none;
@@ -318,7 +351,6 @@ footer a {
         top: 0;
         left: 0;
         z-index: 999;   
-        
         width: 100%;
         background-color: white;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -328,9 +360,6 @@ footer a {
     }
 
     
-    body {
-        padding-top: 110px; 
-    }
 
     /* Liste des liens à l'horizontale */
 header nav ul#menus {
@@ -402,24 +431,6 @@ li#clogo {
     font-size: 1em;
     padding: 10px;
   }
-
-
-    .pdf-container {
-        display: block;
-        margin: 30px auto;
-        width: 80%;       
-        height: 80vh;     
-        border: 1px solid #ddd;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }*
-    .pdf-container-dossier {
-        display: block;
-        margin: 30px auto; 
-        width: 70%;        
-        height: 80vh;      
-        border: 1px solid #ddd;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }  
 
 
 }
