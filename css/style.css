@@ -11,9 +11,7 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body.page-contact {
-    background-color: white;
-}
+
 
 /* Gestion globale des images */
 img {
@@ -26,7 +24,7 @@ input#mn, label[for="mn"] {
     display: none;
 }
 
-/* Liens menu génériques */
+/* Liens menu*/
 ul#menu li a:link,
 ul#menu li a:visited {
     display: block;
@@ -72,12 +70,12 @@ footer a {
 }
 
 /*****************************************/
-/* SECTION PAGE CONTACT             */
+/*      SECTION PAGE CONTACT             */
 /*****************************************/
 html.page-contact, 
 body.page-contact {
-    background-color: white !important;
-    background: white !important;
+    background-color: white;
+    background: white;
 }
 
 #contact {
@@ -123,14 +121,13 @@ body.page-contact {
 /**************************************/
 @media screen and (max-width: 577px) {
 
-
     input#mn {
         display: none;
     }
 
     /*  Bouton menu (Le contenant)  */
     label[for="mn"].menu-icon { 
-        display: block !important;
+        display: block;
         width: 40px; /* Taille fixe pour le bouton */
         height: 40px;
         position: fixed;
@@ -175,7 +172,6 @@ body.page-contact {
     }
 
 
-
     /* Menu à la vertical */
     header nav ul#menus {
         display: flex;
@@ -200,8 +196,7 @@ body.page-contact {
         font-size: 1.2em;
         border-bottom: 1px solid rgba(255,255,255,0.1); 
     }
-    nav a:hover {
-        
+    nav a:hover {        
         background-color: white;
         color:black;
     }
@@ -213,7 +208,7 @@ body.page-contact {
     #contact {
     font-size: 1.2rem; /* Taille plus raisonnable pour mobile */
     min-height: 100vh; /* Utilise toute la hauteur de l'écran */
-}
+    }
 
 
 #contact ul {
@@ -335,9 +330,9 @@ body.page-contact {
 /***      Ordinateur (Écrans > 769px)    ****/
 /********************************************/
 @media screen and (min-width: 769px) {
-body {
-    padding-top: 70px;
-}
+    body {
+        padding-top: 70px;
+    }
     .dossier-images {
         width: 70%; 
     }
@@ -361,7 +356,7 @@ body {
 
     
 
-    /* Liste des liens à l'horizontale */
+ /* Liste des liens à l'horizontale */
 header nav ul#menus {
         display: flex;
         flex-direction: row;            
