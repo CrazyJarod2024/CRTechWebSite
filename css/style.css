@@ -12,7 +12,6 @@ html, body {
 }
 
 
-
 /* Gestion globale des images */
 img {
     max-width: 100%;
@@ -22,15 +21,6 @@ img {
 /* Le Hack du Menu (Caché par défaut) */
 input#mn, label[for="mn"] {
     display: none;
-}
-
-/* Liens menu*/
-ul#menu li a:link,
-ul#menu li a:visited {
-    display: block;
-    text-decoration: none;
-    color: white;
-    background-color: black;
 }
 
 /* Pied de page */
@@ -53,7 +43,18 @@ footer a {
     font-size: 0.8em;
 }
 
-/*****************************************/
+.service-item {
+background-color: rgba(255, 255, 255, 0.1); /* Fond léger pour voir les cartes */
+border-radius: 8px;
+padding: 15px;
+color: white; 
+}
+
+h2 {
+    color: white;
+    padding: 15px;
+}
+/***************************************/
 /* 2. SECTION DOSSIER IMAGES             */
 /*****************************************/
 .dossier-images {
@@ -201,18 +202,18 @@ body.page-contact {
         color:black;
     }
 
-    /* Gestion des Logos Mobile */
+    /* Gestion des logos du menu */
     .logo-tb { display: none; }
     .logo-pc { display: block; margin: 0 auto; height: 40px; }
 
     #contact {
-    font-size: 1.2rem; /* Taille plus raisonnable pour mobile */
+    font-size: 1.2rem; /* Taille plus petite pour smartphone */
     min-height: 100vh; /* Utilise toute la hauteur de l'écran */
     }
 
 
 #contact ul {
-    width: 90%; /* Évite que la liste ne pousse les murs */
+    width: 90%; 
 }
   
 }
@@ -288,7 +289,7 @@ body.page-contact {
         margin-left: 0;
     }
 
-
+    /* Mise en place de la disposition en mode tablette */
     nav img.logo {
         width: 35%;
         height: auto;
@@ -303,13 +304,17 @@ body.page-contact {
         margin-top: 30px;
     }
 
+    /***************************************/
+    /* 1. Section Services                 */
+    /***************************************/
+
     section#services {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 10px;
     }
 
-    section#equipe services-item {
+    section#services .service-item {
         margin-bottom: 20px;
     }
 
@@ -407,25 +412,29 @@ li#clogo {
         font-size: 2em;
     }
 
+    /***************************************/
+    /* 1. Section Services                 */
+    /***************************************/
+    
     section#services {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 15px;
     }
 
-  section#equipe services-item {
-    margin-bottom: 20px;
-  }
+    section#services .service-item {
+        margin-bottom: 20px;
+    }
 
-  section#services h3 {
-    font-size: 1.5em;
-    padding-left: 10px;
-  }
+    section#services h3 {
+        font-size: 1.5em;
+        padding-left: 10px;
+    }
 
-  section#services p {
-    font-size: 1em;
-    padding: 10px;
-  }
+    section#services p {
+        font-size: 1em;
+        padding: 10px;
+    }
 
 
 }
