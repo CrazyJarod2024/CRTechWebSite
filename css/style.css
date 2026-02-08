@@ -16,11 +16,18 @@ html, body {
 img {
     max-width: 100%;
     height: auto;
+    display:block;
 }
 
 /* Le Hack du Menu (Caché par défaut) */
 input#mn, label[for="mn"] {
     display: none;
+}
+
+h2 {
+    color: white;
+    padding: 15px;
+    text-align: center;
 }
 
 /* Pied de page */
@@ -43,6 +50,7 @@ footer a {
     font-size: 0.8em;
 }
 
+
 .service-item {
 background-color: rgba(255, 255, 255, 0.1); /* Fond léger pour voir les cartes */
 border-radius: 8px;
@@ -50,12 +58,131 @@ padding: 15px;
 color: white; 
 }
 
-h2 {
-    color: white;
-    padding: 15px;
+#services{
+        margin: auto;
+        max-width: 90%;
 }
+
+/********************************/
+/* Section Page d'introduction */
+/*******************************/
+
+/* On cible le body de la page d'accueil uniquement */
+body.page-intro {    
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement (Header, Div, Footer) */
+    animation: fadeInPage 1s ease-out;
+}
+
+.intro-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre le texte verticalement */
+    align-items: center;     /* Centre le texte horizontalement */
+    flex: 1;                 /* Prend tout l'espace disponible entre header et footer */
+    color: white;  
+    padding: 20px; 
+}
+
+.intro-container h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.index-text {
+    max-width: 700px;        /* Définit la largeur du bloc de texte */
+    width: 100%;              /* Pour le responsive (tablettes/mobiles) */
+    text-align: justify;     /* Justifie le texte à l'intérieur du bloc */
+    font-size: large;
+    margin-bottom: 20px;     /* Espace avant le bouton */
+    line-height: 1.6;
+}
+
+/* On enlève les paddings inutiles sur les p pour ne pas briser l'alignement */
+.index-text p {
+    margin: 30px 0;          /* Espace entre les paragraphes */
+    line-height: 1.6;        /* Améliore la lisibilité */
+}
+
+
+.btn-entrer {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+    font-size: large;
+    margin-top: 25px;
+}
+
+.btn-entrer:hover {
+    background-color: #2980b9;
+}
+
+/* 
+/* 1. On définit l'animation */
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Léger mouvement vers le haut */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /***************************************/
-/* 2. SECTION DOSSIER IMAGES             */
+/* Fin de section page d'introduction */
+/**************************************/
+
+/*****************************************/
+/*      Section Page Contact             */
+/*****************************************/
+
+html.page-contact, body.page-contact {
+    background-color: white;
+    background: white;
+ }
+
+#contact {
+    margin-bottom: 10px;
+    background-image: url(../images/contact.png);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;               
+    flex-direction: column;  
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bolder;
+    color: hwb(197 9% 24%);
+}
+#contact h1, #contact p {
+    margin-left: 40px;
+}
+#contact ul { 
+    list-style: none;
+    padding: 0;
+    margin-left: 40px;
+}
+#contact li { 
+    display: block; 
+    padding: 10px; 
+}
+
+/*****************************************/
+/* Fin Section Page Contact             */
+/*****************************************/
+
+
+/*****************************************/
+/*    Section Dossier Images             */
 /*****************************************/
 .dossier-images {
     width: 100%; 
@@ -70,49 +197,6 @@ h2 {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/*****************************************/
-/*      SECTION PAGE CONTACT             */
-/*****************************************/
-html.page-contact, 
-body.page-contact {
-    background-color: white;
-    background: white;
-}
-
-#contact {
-    margin-bottom: 10px;
-    background-image: url(../images/contact.png);
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: center;
-    width: 100%;
-    min-height: 80vh;
-    display: flex;               
-    flex-direction: column;  
-    justify-content: center;
-    font-size: xx-large;
-    font-weight: bolder;
-    color: hwb(197 9% 24%);
-    padding-bottom: 15px;
-}
-#contact h1, #contact p {
-    text-align: left;
-    padding: 10px;
-    margin-left: 40px;
-}
-#contact ul { 
-    text-align: left; 
-    width: fit-content; 
-    list-style: none; 
-}
-#contact li { 
-    display: block; 
-    padding: 10px; 
-}
-
-/*****************************************/
-/* FIN SECTION PAGE CONTACT             */
-/*****************************************/
 
 
 
@@ -122,36 +206,25 @@ body.page-contact {
 /**************************************/
 @media screen and (max-width: 577px) {
 
-    input#mn {
-        display: none;
-    }
-
     /*  Bouton menu (Le contenant)  */
     label[for="mn"].menu-icon { 
-        display: block;
-        width: 40px; /* Taille fixe pour le bouton */
-        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
         position: fixed;
         right: 20px;
-        top: 20px;
-        cursor: pointer;
+        top: 15px;
         z-index: 1000; 
         background-color: white;
         border-radius: 5px;
-        padding: 5px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    /*  L'image à l'intérieur du bouton  */
-    label[for="mn"].menu-icon img {
-        width: 100%; /* Elle prend 100% des 40px du parent */
-        height: auto;
-        display: block;
     }
 
     /* Pour que le contenu contact ne remonte pas trop */
     body {
-        margin-top: 80px;
+        padding-top: 70px;
     }
 
     /*  Le Menu caché  */
@@ -176,12 +249,10 @@ body.page-contact {
     /* Menu à la vertical */
     header nav ul#menus {
         display: flex;
-        flex-direction: column; 
-        align-items: center;  
-        padding: 0;
-        margin: 0;
+        flex-direction: column;
         list-style: none;
-        gap: 20px;
+        padding: 0;
+        gap: 10px;
     }
 
     header nav li {
@@ -211,10 +282,17 @@ body.page-contact {
     min-height: 100vh; /* Utilise toute la hauteur de l'écran */
     }
 
+    #contact ul {
+        width: 90%; 
+    }
 
-#contact ul {
-    width: 90%; 
-}
+    #services {
+        display: flex;
+        flex-direction: column; /* Force l'alignement vertical */
+        gap: 20px;              /* La méthode la plus moderne pour l'espace */
+
+    }
+
   
 }
 
@@ -222,8 +300,8 @@ body.page-contact {
 /********************************/
 /* Tablette ********************/
 /*******************************/
-@media screen and (min-width: 578px) and (max-width: 768px) {
-
+@media screen and (min-width: 578px) and (max-width: 812px) {
+    body { padding-top: 80px; }
     .dossier-images {
         width: 90%; 
     }
@@ -245,19 +323,23 @@ body.page-contact {
     }
 
     body {
-        padding-top: 70px; 
+        padding-top: 60px; 
     }
 
     /* Liste des liens à l'horizontale */
     header nav ul#menus {
         display: flex;
-        flex-direction: row; 
-        justify-content: space-between; 
+        justify-content: center; 
         align-items: center;
         list-style: none;
-        margin: 0;
-        padding: 10px 40px;
         margin: 0 auto; 
+        padding: 10px;
+    }
+
+
+    li#clogo {
+        margin-right: auto; 
+      
     }
 
     /* Style des liens pc*/
@@ -265,7 +347,7 @@ body.page-contact {
         text-decoration: none;
         color: #333;
         font-weight: bold;
-        padding: 8px 15px;
+        padding: 10px 15px;
         border-radius: 4px;
         transition: background 0.3s;
     }
@@ -279,15 +361,6 @@ body.page-contact {
     .logo-tb { display: block; height: 50px; }
     .logo-pc { display: none; }
 
-    header nav li {
-        margin-left: 20px;
-    }
-    
-    /* Le Logo du menu (Premier li) */
-    li#clogo {
-        margin-right: auto; 
-        margin-left: 0;
-    }
 
     /* Mise en place de la disposition en mode tablette */
     nav img.logo {
@@ -301,32 +374,31 @@ body.page-contact {
 
     h2 {
         text-align: center;
-        margin-top: 30px;
     }
 
     /***************************************/
-    /* 1. Section Services                 */
+    /*    Section Services                 */
     /***************************************/
 
-    section#services {
+    #services {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        gap: 20px;
     }
 
-    section#services .service-item {
-        margin-bottom: 20px;
-    }
-
-    section#services h3 {
+    #services h3 {
         font-size: 1.5em;
         padding-left: 10px; 
     }
 
-    section#services p {
+    #services p {
         font-size: 1em;
         padding: 10px;
     }
+
+    /***************************************/
+    /*   Fin Section Services              */
+    /***************************************/
 
 }
 
@@ -334,9 +406,16 @@ body.page-contact {
 /********************************************/
 /***      Ordinateur (Écrans > 769px)    ****/
 /********************************************/
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 813px) {
+    body.page-intro {
+        height: 93vh !important; /* 100% de la hauteur de la fenêtre (Viewport Height) */
+        display: flex;
+        flex-direction: column; /* Aligne les éléments verticalement (Header, Div, Footer) */
+        margin: 0;
+    }
+    
     body {
-        padding-top: 70px;
+        padding-top: 90px;
     }
     .dossier-images {
         width: 70%; 
@@ -354,7 +433,7 @@ body.page-contact {
         width: 100%;
         background-color: white;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        padding: 20px;  
+        padding: 10px;  
         height: auto;
         box-sizing: border-box; 
     }
@@ -362,7 +441,7 @@ body.page-contact {
     
 
  /* Liste des liens à l'horizontale */
-header nav ul#menus {
+    header nav ul#menus {
         display: flex;
         flex-direction: row;            
         justify-content: center;         
@@ -377,13 +456,9 @@ header nav ul#menus {
     }
     
     /* Le Logo du menu (Premier li) */
-li#clogo {
-        
-        position: absolute;
-        left: 40px; 
-        top: 50%;   
-        transform: translateY(-50%); 
-        margin: 0;
+       li#clogo {
+        margin-right: auto; 
+        margin-left: 0;
     }
 
     /* Style des liens PC */
@@ -391,7 +466,7 @@ li#clogo {
         text-decoration: none;
         color: #333;
         font-weight: bold;
-        padding: 8px 15px;
+        padding: 10px 15px;
         border-radius: 4px;
         transition: background 0.3s;
     }
@@ -413,25 +488,21 @@ li#clogo {
     }
 
     /***************************************/
-    /* 1. Section Services                 */
+    /*    Section Services                 */
     /***************************************/
     
-    section#services {
+    #services {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 15px;
+        gap: 20px;
     }
 
-    section#services .service-item {
-        margin-bottom: 20px;
-    }
-
-    section#services h3 {
+    #services h3 {
         font-size: 1.5em;
         padding-left: 10px;
     }
 
-    section#services p {
+    #services p {
         font-size: 1em;
         padding: 10px;
     }
